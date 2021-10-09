@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -34,15 +34,19 @@ const useStyles = makeStyles((theme) => ({
 const Cats = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { data, loading, error, progressData, errorImage } = useSelector((state) => state.catsHTTP);
-  console.log(error);
   
+   
+  const { data, loading, error, progressData, errorImage } = useSelector((state) => state.catsHTTP);
   if (data !== defaultData) {
     dispatch(setData(data));
   }
+
+  // const serverRequestUrl = "https://thatcopy.pw/catapi/rest/";  
+  const serverRequestMissUrl = "http://rrewrwerwer.ru/";
+  const [requestUrl, setRequestUrl] = useState(serverRequestMissUrl);
   
   const getThunkCatServerStatusPhoto = useCallback(
-    () => dispatch(getCatServerPhoto()),
+    () => dispatch(getCatServerPhoto(requestUrl)),
     [dispatch]
   );
 

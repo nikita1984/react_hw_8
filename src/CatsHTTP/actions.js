@@ -6,9 +6,10 @@ const getLink = (responseStatus) => {
   return HTTP_CATS_REQUEST_URL;
 }
 
-export const getCatServerPhoto = () => async (dispatch, getState) => {
-  const SERVER_REQUEST_URL = "https://thatcopy.pw/catapi/rest/";
+export const getCatServerPhoto = (requestUrl) => async (dispatch, getState) => {
+  // const SERVER_REQUEST_URL = "https://thatcopy.pw/catapi/rest/";
   // const SERVER_REQUEST_MISS_URL = "http://rrewrwerwer.ru/";
+  console.log(requestUrl);
   const {
     cats: { data, loading, error  },
   } = getState();
@@ -17,11 +18,10 @@ export const getCatServerPhoto = () => async (dispatch, getState) => {
     try {
       dispatch(setError(false));
       dispatch(setLoading(true));
-      const responce = await fetch(SERVER_REQUEST_URL);
+      const responce = await fetch(requestUrl);
       if (!responce.ok) {
         throw new Error("Something went wrong");
       }
-      console.log(responce.status);
       dispatch(setData(getLink(responce.status)));
     } catch (e) {
       dispatch(setError(true));
