@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const Cats = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { data, loading, error } = useSelector((state) => state.cats);
+  const { data, loading, error } = useSelector((state) => state.catsHTTP);
 
   console.log(data, loading, error);
 

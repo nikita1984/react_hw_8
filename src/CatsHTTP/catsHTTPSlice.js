@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // export const CAT_API_URL = "https://thatcopy.pw/catapi/rest/";
 
-export const catSlice = createSlice({
-  name: "cats",
+export const catsHTTPSlice = createSlice({
+  name: "catsHTTP",
   initialState: {
     loading: false,
     error: false,
@@ -23,6 +23,6 @@ export const catSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setLoading, setError, setData } = catSlice.actions;
+export const { setLoading, setError, setData } = catsHTTPSlice.actions;
 
-export default catSlice.reducer;
+export default catsHTTPSlice.reducer;

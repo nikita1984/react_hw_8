@@ -1,4 +1,4 @@
-import { setData, setError, setLoading } from "./catSlice";
+import { setData, setError, setLoading } from "./catsHTTPSlice";
 
 const getLink = (responseStatus) => {
   const HTTP_CATS_URL = "https://http.cat/";
