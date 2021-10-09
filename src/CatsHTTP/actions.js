@@ -3,7 +3,7 @@ import { setData, setError, setLoading } from "./catSlice";
 const getLink = (responseStatus) => {
   const HTTP_CATS_URL = "https://http.cat/";
   const HTTP_CATS_REQUEST_URL = HTTP_CATS_URL + responseStatus.toString();
-  console.log(HTTP_CATS_REQUEST_URL);
+  return HTTP_CATS_REQUEST_URL;
 }
 
 export const getCatPhoto = () => async (dispatch, getState) => {
@@ -20,11 +20,7 @@ export const getCatPhoto = () => async (dispatch, getState) => {
       if (!responce.ok) {
         throw new Error("Something went wrong");
       }
-      getLink(responce.status);
-      
-      const result = await responce.json();
-
-      dispatch(setData(result));
+      dispatch(setData(getLink(responce.status)));
     } catch (e) {
       dispatch(setError(true));
     } finally {

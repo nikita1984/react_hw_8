@@ -53,7 +53,7 @@ const Cats = () => {
         {error && <div>Возникла ошибка</div>}
 
         {!loading && !error && data && (
-          <img className={classes.catImg} src={data.url} alt="Cat" />
+          <img className={classes.catImg} src={data} alt="Cat" />
         )}
       </div>
 
