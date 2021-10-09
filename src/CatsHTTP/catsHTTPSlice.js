@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// export const CAT_API_URL = "https://thatcopy.pw/catapi/rest/";
+const defaultData = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NQzj2JqAe6Gtd65a7iTvm0-wKb2NlluwKA&usqp=CAU";
 
 export const catsHTTPSlice = createSlice({
   name: "catsHTTP",
   initialState: {
     loading: false,
     error: false,
-    data: null,
+    data: defaultData,
   },
   reducers: {
     setLoading: (state, action) => {
