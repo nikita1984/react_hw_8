@@ -1,6 +1,9 @@
-import { CAT_API_URL, setData, setError, setLoading } from "./catSlice";
+import { setData, setError, setLoading } from "./catSlice";
+
+
 
 export const getCatPhoto = () => async (dispatch, getState) => {
+  const SERVER_REQUEST_URL = "https://thatcopy.pw/catapi/rest/";
   const {
     cats: { data, loading, error },
   } = getState();
@@ -9,12 +12,14 @@ export const getCatPhoto = () => async (dispatch, getState) => {
     try {
       dispatch(setError(false));
       dispatch(setLoading(true));
-      const responce = await fetch(CAT_API_URL);
+      const responce = await fetch(SERVER_REQUEST_URL);
       if (!responce.ok) {
         throw new Error("Something went wrong");
       }
+      console.log(responce.status);
       const result = await responce.json();
 
+      
       dispatch(setData(result));
     } catch (e) {
       dispatch(setError(true));

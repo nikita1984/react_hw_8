@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const CAT_API_URL = "https://thatcopy.pw/catapi/rest/";
+// export const CAT_API_URL = "https://thatcopy.pw/catapi/rest/";
 
 export const catSlice = createSlice({
   name: "cats",
