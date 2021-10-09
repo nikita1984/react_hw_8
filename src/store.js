@@ -9,7 +9,7 @@ import { persistReducer } from "redux-persist";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["cats"],
+  blacklist: ["cats", "catsHTTP"],
 };
 
 const reducers = combineReducers({ chat: chatReducer, cats: catReducer, catsHTTP: catsHTTPReducer });

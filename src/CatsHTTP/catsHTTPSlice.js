@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const defaultData = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NQzj2JqAe6Gtd65a7iTvm0-wKb2NlluwKA&usqp=CAU";
+export const defaultData = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NQzj2JqAe6Gtd65a7iTvm0-wKb2NlluwKA&usqp=CAU";
 
 export const catsHTTPSlice = createSlice({
   name: "catsHTTP",

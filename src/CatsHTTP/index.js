@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useDispatch, useSelector } from "react-redux";
 import {getCatPhoto} from './actions'
-import { setData } from "./catsHTTPSlice";
+import { defaultData, setData } from "./catsHTTPSlice";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -35,23 +35,16 @@ const Cats = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.catsHTTP);
-
   console.log(data, loading, error);
-
   
-  const defaultData = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NQzj2JqAe6Gtd65a7iTvm0-wKb2NlluwKA&usqp=CAU";
-  // dispatch(setData(defaultData));
+  if (data !== defaultData) {
+    dispatch(setData(data));
+  }
   
-
-
   const getThunkCatPhoto = useCallback(
     () => dispatch(getCatPhoto()),
     [dispatch]
   );
-
-  useEffect(() => {
-    getThunkCatPhoto();
-  }, [getThunkCatPhoto]);
 
   return (
     <div className={classes.wrapper}>
@@ -70,7 +63,7 @@ const Cats = () => {
         disabled={loading}
         onClick={() => getThunkCatPhoto()}
       >
-        Дай ответ кото-сервера
+        Получить статус запроса от сервера
       </Button>
     </div>
   );
