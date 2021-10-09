@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
 const Cats = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { data, loading, error, progressData } = useSelector((state) => state.catsHTTP);
-  console.log(data, loading, error);
+  const { data, loading, error, progressData, errorImage } = useSelector((state) => state.catsHTTP);
+  console.log(error);
   
   if (data !== defaultData) {
     dispatch(setData(data));
@@ -52,7 +52,9 @@ const Cats = () => {
         {loading && <CircularProgress /> && (
           <img className={classes.catImg} src={progressData} alt="progressCat" />
         )}
-        {error && <div>Возникла ошибка</div>}
+        {error && <div>Возникла ошибка</div> && (
+          <img className={classes.catImg} src={errorImage} alt="errorImage" />
+        )}
 
         {!loading && !error && data && (
           <img className={classes.catImg} src={data} alt="Cat" />
