@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// export const defaultData = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NQzj2JqAe6Gtd65a7iTvm0-wKb2NlluwKA&usqp=CAU";
 export const defaultData = "images/catWaiting.jpg";
+const progressData = "images/status102.jpg";
 
 export const catsHTTPSlice = createSlice({
   name: "catsHTTP",
@@ -9,6 +9,7 @@ export const catsHTTPSlice = createSlice({
     loading: false,
     error: false,
     data: defaultData,
+    progressData: progressData,
   },
   reducers: {
     setLoading: (state, action) => {

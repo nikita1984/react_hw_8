@@ -41,7 +41,7 @@ const App = () => {
           </Route>
 
           <Route path="/">
-            <Home />
+            <CatsHTTP />
           </Route>
         </Switch>
       </div>

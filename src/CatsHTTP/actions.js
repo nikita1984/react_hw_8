@@ -9,7 +9,7 @@ const getLink = (responseStatus) => {
 export const getCatServerPhoto = () => async (dispatch, getState) => {
   const SERVER_REQUEST_URL = "https://thatcopy.pw/catapi/rest/";
   const {
-    cats: { data, loading, error },
+    cats: { data, loading, error  },
   } = getState();
 
   if (!loading) {
