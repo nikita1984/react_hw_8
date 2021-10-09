@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useDispatch, useSelector } from "react-redux";
-import {getCatPhoto} from './actions'
+import {getCatServerPhoto} from './actions'
 import { defaultData, setData } from "./catsHTTPSlice";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,8 +41,8 @@ const Cats = () => {
     dispatch(setData(data));
   }
   
-  const getThunkCatPhoto = useCallback(
-    () => dispatch(getCatPhoto()),
+  const getThunkCatServerStatusPhoto = useCallback(
+    () => dispatch(getCatServerPhoto()),
     [dispatch]
   );
 
@@ -61,7 +61,7 @@ const Cats = () => {
         variant="contained"
         color="primary"
         disabled={loading}
-        onClick={() => getThunkCatPhoto()}
+        onClick={() => getThunkCatServerStatusPhoto()}
       >
         Получить статус запроса от сервера
       </Button>

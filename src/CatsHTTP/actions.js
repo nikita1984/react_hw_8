@@ -6,7 +6,7 @@ const getLink = (responseStatus) => {
   return HTTP_CATS_REQUEST_URL;
 }
 
-export const getCatPhoto = () => async (dispatch, getState) => {
+export const getCatServerPhoto = () => async (dispatch, getState) => {
   const SERVER_REQUEST_URL = "https://thatcopy.pw/catapi/rest/";
   const {
     cats: { data, loading, error },
