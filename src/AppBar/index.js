@@ -73,6 +73,7 @@ const routes = [
   { pathTitle: "Chat", path: "/chat" },
   { pathTitle: "Playground", path: "/playground" },
   { pathTitle: "Cats", path: "/cats" },
+  { pathTitle: "CatsHTTP", path: "/catsHTTP" },
 ];
 
 const AppBar = () => {
@@ -111,8 +112,8 @@ const AppBar = () => {
           anchorPosition={{ top: 50, left: 25 }}
           anchorReference={"anchorPosition"}
         >
-          <MenuItem key={1} onClick={() => history.push("/cats")}>
-            Коты
+          <MenuItem key={1} onClick={() => history.push("/catsHTTP")}>
+            Сервер-Кот
           </MenuItem>
           <MenuItem key={2}>Профиль</MenuItem>
           <MenuItem key={3}>Настройки</MenuItem>

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Chat from "./Chat";
 import Playground from "./Playground";
 import Cats from "./Cats";
+import CatsHTTP from "./CatsHTTP";
 import Home from "./Home";
 import AppBar from "./AppBar";
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,6 +34,10 @@ const App = () => {
 
           <Route path="/cats">
             <Cats />
+          </Route>
+
+          <Route path="/catsHTTP">
+            <CatsHTTP />
           </Route>
 
           <Route path="/">
