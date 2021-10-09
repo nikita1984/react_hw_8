@@ -5,6 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { useDispatch, useSelector } from "react-redux";
 import {getCatServerPhoto} from './actions'
 import { defaultData, setData } from "./catsHTTPSlice";
+import HTTPInput from "./HTTPInput";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -45,6 +46,10 @@ const Cats = () => {
   const serverRequestMissUrl = "http://rrewrwerwer.ru/";
   const [requestUrl, setRequestUrl] = useState(serverRequestMissUrl);
   
+  const onSendMessage = (string) => {
+    setRequestUrl(string);
+  };
+  
   const getThunkCatServerStatusPhoto = useCallback(
     () => dispatch(getCatServerPhoto(requestUrl)),
     [dispatch]
@@ -64,7 +69,7 @@ const Cats = () => {
           <img className={classes.catImg} src={data} alt="Cat" />
         )}
       </div>
-
+      <HTTPInput onSendMessage={onSendMessage} />    
       <Button
         variant="contained"
         color="primary"
