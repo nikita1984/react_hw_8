@@ -1,5 +1,4 @@
 import { useState, useCallback, useEffect } from "react";
-// import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
   inputWrapper: {
     flex: 1,
-    width: "100%",
+    width: "75%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
