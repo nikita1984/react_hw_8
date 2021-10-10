@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,14 +39,12 @@ const MessageInput = () => {
   const [inputMessage, setInputMessage] = useState("");
   const dispatch = useDispatch();
 
-  // const serverRequestUrl = "https://thatcopy.pw/catapi/rest/";  
   // const serverRequestMissUrl = "http://rrewrwerwer.ru/";
   const [requestUrl, setRequestUrl] = useState("");
-  console.log(requestUrl);
 
   const getThunkCatServerStatusPhoto = useCallback(
     () => dispatch(getCatServerPhoto(requestUrl)),
-    [dispatch]
+    [requestUrl]
   );
 
   useEffect(() => {
@@ -59,7 +57,8 @@ const MessageInput = () => {
   const sendAndRemoveInput = () => {
     const trimmedMessageText = inputMessage.trim();
     if (trimmedMessageText !== "") {
-      dispatch(getCatServerPhoto(requestUrl));
+      // dispatch(getCatServerPhoto(requestUrl));
+      getThunkCatServerStatusPhoto();
       setInputMessage("");
     }
   };
@@ -96,9 +95,5 @@ const MessageInput = () => {
     </div>
   );
 };
-
-// MessageInput.propTypes = {
-//   onSendMessage: PropTypes.func.isRequired,
-// };
 
 export default MessageInput;

@@ -1,4 +1,5 @@
 import { setData, setError, setLoading } from "./catsHTTPSlice";
+import PropTypes from "prop-types";
 
 const getLink = (responseStatus) => {
   const HTTP_CATS_URL = "https://http.cat/";
@@ -7,9 +8,6 @@ const getLink = (responseStatus) => {
 }
 
 export const getCatServerPhoto = (requestUrl) => async (dispatch, getState) => {
-  // const SERVER_REQUEST_URL = "https://thatcopy.pw/catapi/rest/";
-  // const SERVER_REQUEST_MISS_URL = "http://rrewrwerwer.ru/";
-  console.log(requestUrl);
   const {
     cats: { data, loading, error  },
   } = getState();
@@ -29,4 +27,8 @@ export const getCatServerPhoto = (requestUrl) => async (dispatch, getState) => {
       dispatch(setLoading(false));
     }
   }
+};
+
+getLink.propTypes = {
+  responseStatus: PropTypes.string.isRequired,
 };
