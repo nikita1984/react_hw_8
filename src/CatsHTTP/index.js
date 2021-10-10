@@ -1,9 +1,9 @@
-import { useState, useCallback } from "react";
+// import { useState, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useDispatch, useSelector } from "react-redux";
-import {getCatServerPhoto} from './actions'
+// import {getCatServerPhoto} from './actions'
 import { defaultData, setData } from "./catsHTTPSlice";
 import HTTPInput from "./HTTPInput";
 
@@ -43,17 +43,17 @@ const Cats = () => {
   }
 
   // const serverRequestUrl = "https://thatcopy.pw/catapi/rest/";  
-  const serverRequestMissUrl = "http://rrewrwerwer.ru/";
-  const [requestUrl, setRequestUrl] = useState(serverRequestMissUrl);
+  // const serverRequestMissUrl = "http://rrewrwerwer.ru/";
+  // const [requestUrl, setRequestUrl] = useState(serverRequestMissUrl);
   
-  const onSendMessage = (string) => {
-    setRequestUrl(string);
-  };
+  // const onSendMessage = (string) => {
+  //   setRequestUrl(string);
+  // };
   
-  const getThunkCatServerStatusPhoto = useCallback(
-    () => dispatch(getCatServerPhoto(requestUrl)),
-    [dispatch]
-  );
+  // const getThunkCatServerStatusPhoto = useCallback(
+  //   () => dispatch(getCatServerPhoto(requestUrl)),
+  //   [dispatch]
+  // );
 
   return (
     <div className={classes.wrapper}>
@@ -69,15 +69,15 @@ const Cats = () => {
           <img className={classes.catImg} src={data} alt="Cat" />
         )}
       </div>
-      <HTTPInput onSendMessage={onSendMessage} />    
-      <Button
+      <HTTPInput />    
+      {/* <Button
         variant="contained"
         color="primary"
         disabled={loading}
         onClick={() => getThunkCatServerStatusPhoto()}
       >
         Получить статус запроса от сервера
-      </Button>
+      </Button> */}
     </div>
   );
 };

@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch, useSelector } from "react-redux";
+import {getCatServerPhoto} from './actions'
+
 
 const useStyles = makeStyles((theme) => ({
   inputRoot: {
@@ -31,14 +34,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MessageInput = ({ onSendMessage }) => {
+const MessageInput = () => {
   const classes = useStyles();
   const [inputMessage, setInputMessage] = useState("");
+  const dispatch = useDispatch();
+
+  // const serverRequestUrl = "https://thatcopy.pw/catapi/rest/";  
+  // const serverRequestMissUrl = "http://rrewrwerwer.ru/";
+  const [requestUrl, setRequestUrl] = useState("");
+  console.log(requestUrl);
+
+  const getThunkCatServerStatusPhoto = useCallback(
+    () => dispatch(getCatServerPhoto(requestUrl)),
+    [dispatch]
+  );
+
+  useEffect(() => {
+    const trimmedMessageText = inputMessage.trim();
+    if (trimmedMessageText !== "") {
+      setRequestUrl(trimmedMessageText);
+    }
+  }, [inputMessage]);
 
   const sendAndRemoveInput = () => {
     const trimmedMessageText = inputMessage.trim();
     if (trimmedMessageText !== "") {
-      onSendMessage(trimmedMessageText);
+      dispatch(getCatServerPhoto(requestUrl));
       setInputMessage("");
     }
   };
@@ -70,14 +91,14 @@ const MessageInput = ({ onSendMessage }) => {
           root: classes.button,
         }}
       >
-        Отправить
+        Получить статус запроса от сервера
       </Button>
     </div>
   );
 };
 
-MessageInput.propTypes = {
-  onSendMessage: PropTypes.func.isRequired,
-};
+// MessageInput.propTypes = {
+//   onSendMessage: PropTypes.func.isRequired,
+// };
 
 export default MessageInput;
